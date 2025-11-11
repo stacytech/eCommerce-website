@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+    background-color: black;
+    color: rgb(122, 121, 121);
+    
+}
+html{
+    scroll-behavior: smooth;
+}
+nav, 
+.nav-links{
+    display: flex;
+}
+
+nav{
+    justify-content: space-around;
+    align-items: center;
+     height: 17vh;
+     border-bottom: 3px solid rgb(0, 0, 0);
+     
+}
+.nav-links{
+    list-style: none;
+    gap: 2rem;
+    font-size: 1.5rem;
+}
+a{
+    color: rgb(122, 121, 121);
+    text-decoration: none;
+    text-decoration-color: white;
+}
+a:hover{
+    color: grey;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: rgb(104, 102, 102);
+}
+.logo{
+    font-size: 2rem;
+}
+.logo:hover{
+    cursor: default;
+}
+#hamburger-nav{
+    display: none;
+}
+.hamburger-menu{
+    position: relative;
+    display: inline-block;
+}
+.hamburger-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
+    background-color: #b4a8a8;
+}
+.hamburger-icon span{
+    height: 2px;
+    width: 100%;
+    background-color: rgb(43, 42, 42);
+    transition: all 0.3 ease-in-out;
+}
+.menu-links{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    width: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.menu-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgb(32, 31, 31);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.menu-links li{
+    list-style: none;
+}
+.menu-links.open{
+    max-height: 300px;
+}
+.hamburger-icon.open span:first-child{
+    transform: rotate(45deg) translate(10px, 5px);
+}
+.hamburger-icon.open span:nth-child(2){
+    opacity: 0; 
+}
+.hamburger-icon.open span:last-child{
+    transform: rotate(-45deg) translate(10px, -5px);
+}
+.hamburger-icon span:first-child{
+    transform: none;
+}
+.hamburger-icon span:first-child{
+    opacity: 1;
+}
+.hamburger-icon span:first-child{
+    transform: none;
+}
+
+#hero-img{
+    width: 100%;
+    height: 100vh;
+    border-radius: 5rem;
+    box-sizing: border-box;
+    box-shadow: none;
+}
+
+.products-text{
+    text-align: center;
+    justify-content: center;
+
+}
+.products-text h2{
+    font-size: 5rem;
+    
+}
+.products-text p{
+    font-size: 3rem;
+}
+/* Flex container for horizontal layout */
+.macbook-row {
+  display: flex;               /* horizontal flex */
+  justify-content: space-between; /* space between cards */
+  align-items: flex-start;
+  gap: 2rem;                   /* spacing between cards */
+  padding: 2rem;
+  overflow-x: auto;            /* allow horizontal scroll on small screens */
+  scroll-behavior: smooth;     /* smooth scroll if needed */
+}
+
+/* Hide scrollbar in WebKit browsers */
+.macbook-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each MacBook card */
+.product-card {
+  flex: 0 0 300px;             /* fixed width, no shrinking */
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.product-card.macbook:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* Image */
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.product-card.macbook img:hover {
+  transform: scale(1.05);
+}
+
+/* Title and price */
+.product-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.product-card .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+/* Button */
+.product-card button {
+  padding: 0.6rem 1.2rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #444;
+}
+.product-card.phone img { max-height: 220px; object-fit: contain; }
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+.cart-count {
+    background-color: #353232;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.cart-icon-mobile {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+}
+
+.cart-icon-mobile a {
+    color: black;
+    text-decoration: none;
+}
+
+.cart-icon:hover,
+.cart-icon-mobile a:hover {
+    color: #666;
+}
+
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+    transition: right 0.5s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    right: 20px;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notification i {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+#notification-message {
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+footer{
+    border-top: 2px solid black;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links li {
+    display: inline;
+}
+
+.footer-links a {
+    color: rgb(122, 121, 121);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.social-media {
+    margin: 10px 0;
+}
+
+.social-media a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
+
+.newsletter {
+    margin: 10px 0;
+}
+
+.newsletter input {
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.newsletter button {
+    padding: 5px 10px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #ff6666;
+}

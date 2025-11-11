@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Delivery - stacyTech</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <header style="display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;">
+    <a href="cart.html" style="color:inherit;text-decoration:none;">← Back to cart</a>
+    <div class="logo">stacyTech</div>
+  </header>
+
+  <main style="max-width:800px;margin:2rem auto;padding:0 1rem;color:rgb(122,121,121);">
+    <h1 style="color:white;margin-bottom:1rem;">Delivery & Payment</h1>
+
+    <form id="delivery-form" style="display:grid;gap:0.8rem;">
+      <input name="name" placeholder="Full name" required style="padding:.7rem;border-radius:6px;border:none;background:#111;color:#fff" />
+      <input name="email" type="email" placeholder="Email" required style="padding:.7rem;border-radius:6px;border:none;background:#111;color:#fff" />
+      <input name="phone" placeholder="Phone" required style="padding:.7rem;border-radius:6px;border:none;background:#111;color:#fff" />
+      <input name="address" placeholder="Street address" required style="padding:.7rem;border-radius:6px;border:none;background:#111;color:#fff" />
+      <input name="city" placeholder="City" required style="padding:.7rem;border-radius:6px;border:none;background:#111;color:#fff" />
+      <input name="postal" placeholder="Postal code" required style="padding:.7rem;border-radius:6px;border:none;background:#111;color:#fff" />
+      <select name="country" required style="padding:.7rem;border-radius:6px;border:none;background:#111;color:#fff">
+        <option value="">Select country</option>
+        <option>United States</option>
+        <option>United Kingdom</option>
+        <option>Nigeria</option>
+        <option>Other</option>
+      </select>
+
+      <div style="display:flex;gap:10px;margin-top:1rem;">
+        <button type="submit" style="background:#ff4444;color:#fff;border:none;padding:.6rem 1rem;border-radius:6px;cursor:pointer">Place Order</button>
+        <button type="button" id="back-to-shop" style="background:#222;color:#fff;border:none;padding:.6rem 1rem;border-radius:6px;cursor:pointer">Cancel</button>
+      </div>
+    </form>
+
+    <section id="order-summary" style="margin-top:1.5rem;color:rgb(150,150,150)"></section>
+  </main>
+
+  <script>
+    function getCart() { try { return JSON.parse(localStorage.getItem('cart') || '[]'); } catch(e){ return []; } }
+    function formatPrice(p){ return '$' + Number(p).toFixed(2); }
+
+    function renderSummary(){
+      const cart = getCart();
+      const section = document.getElementById('order-summary');
+      if (!cart.length) {
+        section.innerHTML = '<div style="color:rgb(150,150,150)">No items in cart.</div>';
+        return;
+      }
+      let total = 0;
+      const rows = cart.map(it => {
+        total += Number(it.price || 0);
+        return '<div style="display:flex;justify-content:space-between;padding:.4rem 0;color:rgb(200,200,200)"><div>' + it.name + '</div><div>' + formatPrice(it.price) + '</div></div>';
+      }).join('');
+      section.innerHTML = '<h3 style="color:white">Order summary</h3>' + rows + '<div style="margin-top:.8rem;font-weight:600;color:white">Total: ' + formatPrice(total) + '</div>';
+    }
+
+    document.getElementById('back-to-shop').addEventListener('click', () => location.href = 'index.html');
+
+    document.getElementById('delivery-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        address: form.address.value,
+        city: form.city.value,
+        postal: form.postal.value,
+        country: form.country.value,
+        createdAt: new Date().toISOString()
+      };
+      localStorage.setItem('deliveryInfo', JSON.stringify(data));
+      alert('Order placed. Thank you!');
+      localStorage.removeItem('cart');
+      localStorage.setItem('lastOrder', JSON.stringify({ cart: getCart(), delivery: data }));
+      location.href = 'index.html';
+    });
+
+   
+    renderSummary();
+  </script>
+</body>
+</html>
