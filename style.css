@@ -138,23 +138,23 @@ a:hover{
 }
 /* Flex container for horizontal layout */
 .macbook-row {
-  display: flex;               /* horizontal flex */
-  justify-content: space-between; /* space between cards */
+  display: flex;              
+  justify-content: space-between; 
   align-items: flex-start;
-  gap: 2rem;                   /* spacing between cards */
+  gap: 2rem;                   
   padding: 2rem;
-  overflow-x: auto;            /* allow horizontal scroll on small screens */
-  scroll-behavior: smooth;     /* smooth scroll if needed */
+  overflow-x: auto;           
+  scroll-behavior: smooth;    
 }
 
-/* Hide scrollbar in WebKit browsers */
+/* Hide scrollbar in my browsers */
 .macbook-row::-webkit-scrollbar {
   display: none;
 }
 
-/* Each MacBook card */
+
 .product-card {
-  flex: 0 0 300px;             /* fixed width, no shrinking */
+  flex: 0 0 300px;             /* fixed width to avoid  shrinking */
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
